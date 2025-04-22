@@ -1,0 +1,8 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource prefix="/">
+    <file>assets/check-small-svgrepo-com.png</file>
+    <file>assets/icons-check.png</file>
+    <file>assets/icons-check-art.png</file>
+    <file>assets/check-disabled.png</file>
+</qresource>
+</RCC>
