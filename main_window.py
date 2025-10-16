@@ -100,24 +100,23 @@ class MainWindow(QMainWindow):
 
     def set_layouts(self):
 
-            # -- inner upper container --
+        # --- TOP LAYOUT ---
         self.inner_upper_layout.addWidget(self.use_files_check)
         self.inner_upper_layout.addWidget(self.open_files_button)
         self.inner_upper_layout.addWidget(self.open_log_button)
 
         self.top_layout.addWidget(self.title_label)
+        self.top_layout.addLayout(self.inner_upper_layout)
 
-
-            # -- middle layout sizing/alignment --
-
-
-            # -- Add Widgets to middle layouts
+        # --- MIDDLE LAYOUT ---
         self.middle_layout.addWidget(self.files_preview_label)
         self.middle_inner_layout.addWidget(self.files_preview)
 
+        # --- OPTIONS LAYOUT (Clear/Remove buttons) ---
         self.options_inner_layout.addWidget(self.clear_files_button)
         self.options_inner_layout.addWidget(self.remove_selected_file)
 
+        # --- BOTTOM GROUP CONTENTS ---
         self.bottom_inner_layout.addWidget(self.chars_remove_label)
         self.bottom_inner_layout.addWidget(self.chars_to_remove)
         self.bottom_inner_layout.addWidget(self.start_end_label)
@@ -127,31 +126,29 @@ class MainWindow(QMainWindow):
         self.string_layout.addWidget(self.remove_string_check)
         self.string_layout.addWidget(self.remove_string_text)
 
+        self.options_v_layout.addLayout(self.bottom_inner_layout)
         self.options_v_layout.addWidget(self.remove_spaces_check)
+        self.options_v_layout.addLayout(self.string_layout)
         self.options_v_layout.addWidget(self.reset_settings_button, alignment=Qt.AlignmentFlag.AlignLeft)
 
-
+        self.bottom_group.setLayout(self.options_v_layout)
+        self.options_layout.addLayout(self.options_inner_layout)
         self.options_layout.addWidget(self.bottom_group, alignment=Qt.AlignmentFlag.AlignCenter)
+
+        # --- OUTPUT SECTION ---
         self.output_inner_layout.addWidget(self.output_label)
         self.output_inner_layout.addWidget(self.output_view)
         self.output_button_layout.addWidget(self.apply_button)
         self.output_button_layout.addWidget(self.preview_button)
         self.output_button_layout.addWidget(self.undo_button)
-
-        self.top_layout.addLayout(self.inner_upper_layout)
-        self.middle_layout.addLayout(self.middle_inner_layout)
-
-        self.middle_inner_layout.addLayout(self.options_layout)
-
-        self.options_layout.addLayout(self.options_inner_layout)
-        self.options_v_layout.addLayout(self.string_layout)
-        self.options_v_layout.addLayout(self.bottom_inner_layout)
-        self.options_layout.addLayout(self.output_inner_layout)
-
         self.output_inner_layout.addLayout(self.output_button_layout)
 
-        self.bottom_group.setLayout(self.options_v_layout)
+        # --- Nesting Order ---
+        self.options_layout.addLayout(self.output_inner_layout)
+        self.middle_inner_layout.addLayout(self.options_layout)
+        self.middle_layout.addLayout(self.middle_inner_layout)
 
+        # --- Container Assembly ---
         self.container.addLayout(self.top_layout)
         self.container.addLayout(self.middle_layout)
         self.container.addLayout(self.options_layout)
@@ -225,7 +222,6 @@ class MainWindow(QMainWindow):
         menu.addSeparator()
         recents_action = QAction('Recents')
         menu.addAction(recents_action)
-
         return menu
 
     def dragEnterEvent(self, event):
@@ -241,5 +237,3 @@ class MainWindow(QMainWindow):
                     item = QListWidgetItem(fname)
                     item.setData(Qt.ItemDataRole.UserRole, file_path)
                     self.files_preview.addItem(item)
-
-        # -- Functions --
