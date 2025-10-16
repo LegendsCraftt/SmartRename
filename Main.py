@@ -17,9 +17,11 @@ from PyQt6.QtWidgets import (
     QMainWindow,
     QStatusBar,
     QToolBar, QHBoxLayout, QSlider, QVBoxLayout, QWidget, QPushButton, QFileDialog, QListWidget, QLineEdit, QSizePolicy,
-    QGroupBox, QMessageBox, QToolTip, QListWidgetItem,
+    QGroupBox, QMessageBox, QToolTip, QListWidgetItem, QMenu,
 )
 
+
+# -- Add Logger --
 
 LOG_PATH = Path.home() / "Documents" / "smart_rename_log.txt"
 
@@ -49,7 +51,7 @@ class MainWindow(QMainWindow):
 
         self.rename_history = []
 
-        # -- Create and initialize the window and layout, we will add more layouts to the container
+        # -- Create and initialize the window and layout
 
         central_widget = QWidget()
         container = QVBoxLayout()
@@ -67,9 +69,6 @@ class MainWindow(QMainWindow):
         self.open_files_button = QPushButton('Open Files')
         self.use_files_check = QCheckBox('File Mode')
         self.open_log_button = QPushButton('Open Logs')
-
-
-
 
             # -- inner upper container --
         self.inner_upper_layout.addWidget(self.use_files_check)
@@ -190,7 +189,16 @@ class MainWindow(QMainWindow):
         self.end_check.stateChanged.connect(self.SetStartState)
 
         self.remove_string_check.stateChanged.connect(self.UseExactString)
+        self.remove_string_text.setContextMenuPolicy(Qt.ContextMenuPolicy.ActionsContextMenu)
 
+        menu: QMenu = self.remove_string_text.createStandardContextMenu()
+        menu.addSeparator()
+
+        self.recents_action = QAction('Recents')
+
+
+
+        menu.addAction(self.recents_action)
 
             # -- Configs --
         self.chars_to_remove.setValidator(QIntValidator(0, 9999, self))
@@ -633,6 +641,11 @@ QLineEdit:hover {
 QLineEdit:focus:hover {
     border-bottom: 2px solid #cfc186;
     background: #32353b;
+}
+
+QScrollArea {
+    border: none;
+    background: #2b2b2b;
 }
 
 
