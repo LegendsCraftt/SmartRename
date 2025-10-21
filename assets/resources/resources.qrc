@@ -1,0 +1,11 @@
+<!DOCTYPE RCC>
+    <RCC version="1.0">
+        <qresource prefix="/assets">
+            <file>../check-small-svgrepo-com.png</file>
+            <file>../icons-check.png</file>
+            <file>../icons-check-art.png</file>
+            <file>../check-disabled.png</file>
+            <file>../SmartRename_Icon_OS.ico</file>
+            <file>../SmartRename_Icon_Window.png</file>
+        </qresource>
+    </RCC>

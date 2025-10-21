@@ -1,4 +1,4 @@
-import resources_rc
+import assets.resources.resources_rc
 
 styles = """
     
@@ -160,7 +160,14 @@ QScrollArea {
     background: #2b2b2b;
 }
 
+QWidget#scrimOverlay {
+    background: rgba(0,0,0,0.3);  /* dim the app while open */
+}
 
+#sidePanel {
+    background: #222426;
+    border-radius: 12px;
+}
 
 
 

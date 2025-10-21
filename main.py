@@ -1,14 +1,15 @@
 from PyQt6.QtWidgets import QApplication
 
 
-from main_window import MainWindow
-from style import styles
+from ui.main_window import MainWindow
+from assets.resources.style import styles
+
+from custom_widgets.resource_loader import qss, stream
 
 
 def main():
     app = QApplication([])
-    app.setStyleSheet(styles)
-
+    app.setStyleSheet(stream)
 
     window = MainWindow()
     window.show()
