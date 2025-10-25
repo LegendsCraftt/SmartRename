@@ -1,7 +1,8 @@
 from PyQt6.QtGui import QIcon
-from PyQt6.QtWidgets import QDialog, QVBoxLayout, QListWidget, QLineEdit, QPushButton, QHBoxLayout
+from PyQt6.QtWidgets import QDialog, QVBoxLayout, QListWidget, QLineEdit, QPushButton, QHBoxLayout, QInputDialog, \
+    QMessageBox
 
-from data.settings import add_saved_rm_string, remove_saved_rm_string
+from data.settings import add_saved_rm_string, remove_saved_rm_string, edit_saved_rm_string
 from assets.resources import resources_rc
 
 
@@ -57,4 +58,19 @@ class PreferencesDialog(QDialog):
         self.list.clearSelection()
 
     def edit_item(self):
-        ...
+        items = self.list.selectedItems()
+        if not items:
+            QMessageBox.warning(self, "Error", "Please select an item to edit.")
+            return
+
+        item = items[0]
+
+        if item:
+            text, ok = QInputDialog.getText(self, "Edit", "Enter new string:", QLineEdit.EchoMode.Normal, item.text())
+            if ok:
+                edit_saved_rm_string(item.text(), text)
+                item.setText(text)
+
+        else:
+            QMessageBox.warning(self, "Error", "Cannot edit multiple strings.")
+

@@ -56,6 +56,12 @@ def remove_saved_rm_string(string):
         strings.remove(string)
         save_setting("removeStringsSaved", strings)
 
+def edit_saved_rm_string(string, new_string):
+    old_string = string
+    remove_saved_rm_string(string)
+    add_saved_rm_string(new_string)
+
+
 
 def add_recent_rm_string(string):
     """Maintain a separate 'recent' list."""
@@ -64,4 +70,6 @@ def add_recent_rm_string(string):
         recents.remove(string)
     recents.insert(0, string)
     save_setting("removeStringsRecent", recents[:10])
+
+
 
