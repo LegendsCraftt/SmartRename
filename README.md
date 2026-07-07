@@ -2,7 +2,7 @@
 
 Smart Rename is a desktop file renaming tool built with PyQt6 for batch operations such as removing characters, deleting exact strings, and cleaning whitespace in filenames.
 
-Created by [Tyler Emery](https://github.com/LegendsCraftt)  
+Created by [Tyler Emery](https://github.com/TylerBuilds-Official)  
 Version: `v1.0.1`  
 License: [MIT](LICENSE)
 
@@ -19,7 +19,7 @@ License: [MIT](LICENSE)
 
 ## Download
 
-[Download the latest Windows `.exe` release](https://github.com/LegendsCraftt/SmartRename/releases/latest)
+[Download the latest Windows `.exe` release](https://github.com/TylerBuilds-Official/SmartRename/releases/latest)
 
 **Windows note:**  
 You may see a Microsoft SmartScreen warning the first time you launch the app.  
@@ -53,7 +53,7 @@ The log includes original and updated filenames with timestamps.
 
 ## Support
 
-For bug reports or feature requests, open an [issue on GitHub](https://github.com/LegendsCraftt/SmartRename/issues).
+For bug reports or feature requests, open an [issue on GitHub](https://github.com/TylerBuilds-Official/SmartRename/issues).
 
 ## License
 
